@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "moduleResolution": "node",
+    "declaration": false,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@gera2ld/jsx-dom",
+    "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost", "ESNext"],
+    "strict": true,
+    "importHelpers": true
+  },
+  "include": ["src/**/*", "node_modules/@violentmonkey/types"]
+}
