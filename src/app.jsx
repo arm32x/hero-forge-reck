@@ -1,5 +1,6 @@
 import { mountDom } from "@gera2ld/jsx-dom";
 
+import { ChevronRight } from "./icons.jsx";
 import stylesheet from "./style.css";
 
 GM_addStyle(stylesheet);
@@ -27,7 +28,16 @@ observer.observe(mountpoint, { childList: true, subtree: true });
 
 const sidebar = mountDom(
   <div className="ReCK-sidebar">
-
+    <div className="ReCK-sidebar-content"></div>
+    <div className="ReCK-sidebar-handle">
+      <ChevronRight />
+    </div>
   </div>
 );
+
+const sidebarHandle = sidebar.getElementsByClassName("ReCK-sidebar-handle")[0];
+sidebarHandle.addEventListener("click", (_) => {
+  sidebar.classList.toggle("ReCK-opened");
+});
+
 document.body.insertBefore(sidebar, mountpoint);

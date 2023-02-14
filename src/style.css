@@ -1,6 +1,8 @@
 :root {
-    --ReCK-sidebar-width-closed: 25px;
-    --ReCK-sidebar-width-opened: 500px;
+    --ReCK-sidebar-width-closed: 24px;
+    --ReCK-sidebar-width-opened: 640px;
+
+    --ReCK-ease-out-function: cubic-bezier(0.165, 0.840, 0.440, 1.000);
 }
 
 .ReCK-version-tag {
@@ -22,23 +24,63 @@
     position: absolute;
     top: 0px;
     left: calc(var(--ReCK-sidebar-width-closed) - var(--ReCK-sidebar-width-opened));
-    z-index: 3;
+    z-index: 10;
 
     width: var(--ReCK-sidebar-width-opened);
     height: 100%;
 
+    display: flex;
+
     background-color: #2c2a28;
     box-shadow: #2c2a28 0px 0px 6px;
 
-    transition: left 300ms ease;
+    transition: left 200ms var(--ReCK-ease-out-function);
 }
 
 .ReCK-sidebar.ReCK-opened {
     left: 0px;
-    z-index: 1000;
+}
+
+/* NOTE: This should be kept in sync with the --ReCK-sidebar-width-opened variable. */
+@media (max-width: 640px) {
+    .ReCK-sidebar {
+        width: 100%;
+        left: calc(-100% + var(--ReCK-sidebar-width-closed));
+    }
+}
+
+.ReCK-sidebar, .ReCK-sidebar * {
+    box-sizing: border-box;
 }
 
 .ReCK-sidebar ~ #root {
     width: calc(100% - var(--ReCK-sidebar-width-closed));
     margin-left: var(--ReCK-sidebar-width-closed);
+}
+
+.ReCK-sidebar-content {
+    flex-grow: 1;
+}
+
+.ReCK-sidebar-handle {
+    width: calc(var(--ReCK-sidebar-width-closed) + 1px);
+
+    border: solid transparent;
+    border-width: 0px 1px;
+    border-left-color: rgba(255, 255, 255, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ReCK-sidebar-handle .ReCK-icon {
+    fill: rgba(255, 255, 255, 0.5);
+    transform: rotate(0deg);
+    transition: transform 200ms var(--ReCK-ease-out-function);
+}
+
+.ReCK-opened .ReCK-sidebar-handle .ReCK-icon {
+    transform: rotate(180deg);
 }
