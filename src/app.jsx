@@ -1,4 +1,7 @@
+import { json } from "@codemirror/lang-json";
 import { mountDom } from "@gera2ld/jsx-dom";
+import { basicSetup, EditorView } from "codemirror";
+import { materialDark } from "cm6-theme-material-dark";
 
 import { ChevronRight } from "./icons.jsx";
 import stylesheet from "./style.css";
@@ -26,9 +29,33 @@ const observer = new MutationObserver((_, observer) => {
 });
 observer.observe(mountpoint, { childList: true, subtree: true });
 
+const JsonEditor = () => {
+  const extensions = [basicSetup, json(), materialDark];
+  const codemirror = new EditorView({
+    extensions,
+  });
+
+  return (
+    <>
+      <div className="ReCK-header">
+        <h2 className="ReCK-header-title">
+          <span className="ReCK-logo">ReCK</span> JSON Editor
+        </h2>
+      </div>
+      <div className="ReCK-json-codemirror">{codemirror.dom}</div>
+      <div className="ReCK-json-button-panel">
+        <button>Reload</button>
+        <button>Apply</button>
+      </div>
+    </>
+  );
+};
+
 const sidebar = mountDom(
   <div className="ReCK-sidebar">
-    <div className="ReCK-sidebar-content"></div>
+    <div className="ReCK-sidebar-content">
+      <JsonEditor />
+    </div>
     <div className="ReCK-sidebar-handle">
       <ChevronRight />
     </div>

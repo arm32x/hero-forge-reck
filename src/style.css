@@ -58,10 +58,6 @@
     margin-left: var(--ReCK-sidebar-width-closed);
 }
 
-.ReCK-sidebar-content {
-    flex-grow: 1;
-}
-
 .ReCK-sidebar-handle {
     width: calc(var(--ReCK-sidebar-width-closed) + 1px);
 
@@ -83,4 +79,24 @@
 
 .ReCK-opened .ReCK-sidebar-handle .ReCK-icon {
     transform: rotate(180deg);
+}
+
+.ReCK-sidebar-content {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.ReCK-json-codemirror {
+    flex-grow: 1;
+}
+
+.ReCK-json-codemirror .cm-editor {
+    width: 100%;
+    height: 100%;
+}
+
+.ReCK-json-codemirror .cm-scroller {
+    overflow: auto;
 }
