@@ -1,3 +1,3 @@
 /// <reference types="./types" />
 
-import "./app";
+import "./app.jsx";

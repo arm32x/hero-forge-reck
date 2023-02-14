@@ -12,7 +12,7 @@ const versionTag = mountDom(
 );
 
 // Ensure the version tag is always there, even if React decides to remove it.
-const mountpoint = document.getElementById("root")!;
+const mountpoint = document.getElementById("root");
 const observer = new MutationObserver((_, observer) => {
   const header = mountpoint.getElementsByTagName("header").item(0);
   const dropdowns = header?.getElementsByTagName("nav").item(0);
