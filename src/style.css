@@ -1,102 +1,153 @@
 :root {
-    --ReCK-sidebar-width-closed: 24px;
-    --ReCK-sidebar-width-opened: 640px;
+  --ReCK-sidebar-width-closed: 24px;
+  --ReCK-sidebar-width-opened: 640px;
 
-    --ReCK-ease-out-function: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  --ReCK-ease-out-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  --ReCK-background-color: #2c2a28; /* Same color as the Hero Forge header. */
+  --ReCK-foreground-color: #f1f1f1; /* Same color as the Hero Forge header. */
+
+  --ReCK-secondary-color: rgba(255, 255, 255, 0.5);
+  --ReCK-divider-color: rgba(255, 255, 255, 0.1);
+  --ReCK-focus-color-opaque: #3e5a65;
+  --ReCK-selection-color: rgba(44, 193, 255, 0.1);
+
+  --ReCK-editor-active-line-background-color: rgba(255, 255, 255, 0.05);
+  --ReCK-editor-selection-match-color: rgba(144, 255, 0, 0.05);
+
+  --ReCK-editor-tooltip-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24); /* Material design card shadow. */
 }
 
 .ReCK-version-tag {
-    position: absolute;
-    left: 195px;
-    top: 15px;
+  position: absolute;
+  left: 195px;
+  top: 15px;
 
-    font-family: monospace;
-    font-size: 14px;
+  font-family: monospace;
+  font-size: 14px;
 }
 
 @media (max-width: 743px) {
-    .ReCK-version-tag {
-        left: 48px;
-    }
+  .ReCK-version-tag {
+    left: 48px;
+  }
 }
 
 .ReCK-sidebar {
-    position: absolute;
-    top: 0px;
-    left: calc(var(--ReCK-sidebar-width-closed) - var(--ReCK-sidebar-width-opened));
-    z-index: 10;
+  position: absolute;
+  top: 0px;
+  left: calc(
+    var(--ReCK-sidebar-width-closed) - var(--ReCK-sidebar-width-opened)
+  );
+  z-index: 10;
 
-    width: var(--ReCK-sidebar-width-opened);
-    height: 100%;
+  width: var(--ReCK-sidebar-width-opened);
+  height: 100%;
+  overflow: hidden;
 
-    display: flex;
+  display: flex;
 
-    background-color: #2c2a28;
-    box-shadow: #2c2a28 0px 0px 6px;
+  color: var(--ReCK-foreground-color);
+  font-family: monospace;
 
-    transition: left 200ms var(--ReCK-ease-out-function);
+  background-color: var(--ReCK-background-color);
+  box-shadow: var(--ReCK-background-color) 0px 0px 6px;
+
+  transition: left 300ms var(--ReCK-ease-out-function);
 }
 
 .ReCK-sidebar.ReCK-opened {
-    left: 0px;
+  left: 0px;
 }
 
 /* NOTE: This should be kept in sync with the --ReCK-sidebar-width-opened variable. */
 @media (max-width: 640px) {
-    .ReCK-sidebar {
-        width: 100%;
-        left: calc(-100% + var(--ReCK-sidebar-width-closed));
-    }
+  .ReCK-sidebar {
+    width: 100%;
+    left: calc(-100% + var(--ReCK-sidebar-width-closed));
+  }
 }
 
-.ReCK-sidebar, .ReCK-sidebar * {
-    box-sizing: border-box;
+.ReCK-sidebar,
+.ReCK-sidebar * {
+  box-sizing: border-box;
 }
 
 .ReCK-sidebar ~ #root {
-    width: calc(100% - var(--ReCK-sidebar-width-closed));
-    margin-left: var(--ReCK-sidebar-width-closed);
+  width: calc(100% - var(--ReCK-sidebar-width-closed));
+  margin-left: var(--ReCK-sidebar-width-closed);
 }
 
 .ReCK-sidebar-handle {
-    width: calc(var(--ReCK-sidebar-width-closed) + 1px);
+  width: calc(var(--ReCK-sidebar-width-closed) + 1px);
 
-    border: solid transparent;
-    border-width: 0px 1px;
-    border-left-color: rgba(255, 255, 255, 0.1);
+  border: solid transparent;
+  border-width: 0px 1px;
+  border-left-color: var(--ReCK-divider-color);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
 }
 
 .ReCK-sidebar-handle .ReCK-icon {
-    fill: rgba(255, 255, 255, 0.5);
-    transform: rotate(0deg);
-    transition: transform 200ms var(--ReCK-ease-out-function);
+  fill: var(--ReCK-secondary-color);
+  transform: rotate(0deg);
+  transition: transform 300ms var(--ReCK-ease-out-function);
 }
 
 .ReCK-opened .ReCK-sidebar-handle .ReCK-icon {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .ReCK-sidebar-content {
-    flex-grow: 1;
+  flex-grow: 1;
 
-    display: flex;
-    flex-direction: column;
+  max-width: calc(
+    var(--ReCK-sidebar-width-opened) - var(--ReCK-sidebar-width-closed) - 1px
+  );
+
+  display: flex;
+  flex-direction: column;
+}
+
+.ReCK-header {
+  height: 40px;
+
+  padding: 0px 24px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  border-bottom: 1px solid var(--ReCK-divider-color);
+}
+
+.ReCK-header-title {
+  color: var(--ReCK-foreground-color);
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.ReCK-logo {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .ReCK-json-codemirror {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .ReCK-json-codemirror .cm-editor {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .ReCK-json-codemirror .cm-scroller {
-    overflow: auto;
+  overflow: auto;
 }
