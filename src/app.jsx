@@ -6,12 +6,15 @@ import { keymap } from "@codemirror/view";
 import { mountDom } from "@gera2ld/jsx-dom";
 import { materialDarkHighlightStyle } from "cm6-theme-material-dark";
 import { basicSetup, EditorView } from "codemirror";
+import initRippleJS from "vanilla-ripplejs/lib";
+import rippleJSStylesheet from "vanilla-ripplejs/ripple.css";
 
 import * as icons from "./icons.jsx";
 import stylesheet from "./style.css";
 import theme from "./theme.js";
 
 GM_addStyle(stylesheet);
+GM_addStyle(rippleJSStylesheet);
 
 const version = GM_info.script.version;
 console.log(`ReCK for Hero Forge v${version}`);
@@ -57,10 +60,12 @@ const JsonEditor = () => {
       <div className="ReCK-json-codemirror">{codemirror.dom}</div>
       <div className="ReCK-button-panel">
         <button className="ReCK-button">
+          <div className="rippleJS"></div>
           <icons.FileOpen />
           Reload
         </button>
         <button className="ReCK-button">
+          <div className="rippleJS"></div>
           <icons.SaveAlt />
           Apply
         </button>
@@ -71,11 +76,13 @@ const JsonEditor = () => {
 
 const sidebar = mountDom(
   <div className="ReCK-sidebar">
+    {/* TODO: Make this keyboard-accessible. */}
+    <div className="ReCK-sidebar-handle">
+      <div className="rippleJS"></div>
+      <icons.ChevronRight />
+    </div>
     <div className="ReCK-sidebar-content">
       <JsonEditor />
-    </div>
-    <div className="ReCK-sidebar-handle">
-      <icons.ChevronRight />
     </div>
   </div>
 );
@@ -91,3 +98,4 @@ sidebarHandle.addEventListener("click", (_) => {
 });
 
 document.body.insertBefore(sidebar, mountpoint);
+initRippleJS(sidebar);

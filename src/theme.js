@@ -29,10 +29,10 @@ export default EditorView.theme(
       backgroundColor: "var(--ReCK-hover-color)",
     },
 
-    "&.cm-focused": {
+    "&.cm-editor.cm-focused": {
       outline: "1px solid var(--ReCK-focus-color-opaque)",
     },
-    "&.cm-focused .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection":
+    "&.cm-editor.cm-focused .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection":
       {
         backgroundColor: "var(--ReCK-selection-color)",
       },

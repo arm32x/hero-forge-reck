@@ -48,6 +48,7 @@
   overflow: hidden;
 
   display: flex;
+  flex-direction: row-reverse;
 
   color: var(--ReCK-foreground-color);
   font-family: monospace;
@@ -80,8 +81,15 @@
   margin-left: var(--ReCK-sidebar-width-closed);
 }
 
+.ReCK-sidebar .rippleJS .ripple {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
 .ReCK-sidebar-handle {
+  position: relative;
   width: calc(var(--ReCK-sidebar-width-closed) + 1px);
+
+  background-color: rgba(255, 255, 255, 0);
 
   border-left: 1px solid var(--ReCK-divider-color);
 
@@ -90,7 +98,11 @@
   align-items: center;
   justify-content: center;
 
-  cursor: pointer;
+  transition: background-color 100ms var(--ReCK-ease-out-function);
+}
+
+.ReCK-sidebar-handle:hover, .ReCK-sidebar-handle:active {
+  background-color: var(--ReCK-hover-color);
 }
 
 .ReCK-sidebar-handle .ReCK-icon {
@@ -159,6 +171,11 @@
   overflow: auto;
 }
 
+.ReCK-json-codemirror .cm-editor {
+  outline: 1px solid transparent;
+  transition: outline-color 100ms var(--ReCK-ease-out-function);
+}
+
 .ReCK-button-panel {
   height: 48px;
 
@@ -178,12 +195,14 @@
 }
 
 .ReCK-button {
+  position: relative;
   height: 36px;
 
   padding: 0px 16px;
 
   display: flex;
   align-items: center;
+  overflow: hidden;
 
   /* This is not 'transparent' to avoid potential issues transitioning
      from transparent black to translucent white. */
@@ -196,6 +215,9 @@
   border: 1px solid var(--ReCK-divider-color);
   border-radius: 2px;
   outline: none;
+
+  transition: 100ms var(--ReCK-ease-out-function);
+  transition-property: background-color, border-color;
 }
 
 .ReCK-button:focus {
@@ -203,7 +225,7 @@
   outline: none;
 }
 
-.ReCK-button:hover {
+.ReCK-button:hover, .ReCK-button:active {
   background-color: var(--ReCK-hover-color);
 }
 
