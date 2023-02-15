@@ -9,10 +9,11 @@
 
   --ReCK-secondary-color: rgba(255, 255, 255, 0.5);
   --ReCK-divider-color: rgba(255, 255, 255, 0.1);
+  --ReCK-hover-color: rgba(255, 255, 255, 0.05);
+
   --ReCK-focus-color-opaque: #3e5a65;
   --ReCK-selection-color: rgba(44, 193, 255, 0.1);
 
-  --ReCK-editor-active-line-background-color: rgba(255, 255, 255, 0.05);
   --ReCK-editor-selection-match-color: rgba(144, 255, 0, 0.05);
 
   --ReCK-editor-tooltip-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
@@ -64,8 +65,8 @@
 /* NOTE: This should be kept in sync with the --ReCK-sidebar-width-opened variable. */
 @media (max-width: 640px) {
   .ReCK-sidebar {
-    width: 100%;
-    left: calc(-100% + var(--ReCK-sidebar-width-closed));
+    width: 100vw;
+    left: calc(-100vw + var(--ReCK-sidebar-width-closed));
   }
 }
 
@@ -82,9 +83,7 @@
 .ReCK-sidebar-handle {
   width: calc(var(--ReCK-sidebar-width-closed) + 1px);
 
-  border: solid transparent;
-  border-width: 0px 1px;
-  border-left-color: var(--ReCK-divider-color);
+  border-left: 1px solid var(--ReCK-divider-color);
 
   display: flex;
   flex-direction: column;
@@ -115,6 +114,13 @@
   flex-direction: column;
 }
 
+/* NOTE: This should be kept in sync with the --ReCK-sidebar-width-opened variable. */
+@media (max-width: 640px) {
+  .ReCK-sidebar-content {
+    max-width: calc(100vw - var(--ReCK-sidebar-width-closed) - 1px);
+  }
+}
+
 .ReCK-header {
   height: 40px;
 
@@ -124,6 +130,7 @@
   flex-direction: row;
   align-items: center;
 
+  border-top: 1px solid transparent;
   border-bottom: 1px solid var(--ReCK-divider-color);
 }
 
@@ -150,4 +157,57 @@
 
 .ReCK-json-codemirror .cm-scroller {
   overflow: auto;
+}
+
+.ReCK-button-panel {
+  height: 48px;
+
+  padding-right: 16px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  border-top: 1px solid var(--ReCK-divider-color);
+  border-bottom: 1px solid transparent;
+}
+
+.ReCK-button-panel > .ReCK-button {
+  margin-left: 16px;
+}
+
+.ReCK-button {
+  height: 36px;
+
+  padding: 0px 16px;
+
+  display: flex;
+  align-items: center;
+
+  /* This is not 'transparent' to avoid potential issues transitioning
+     from transparent black to translucent white. */
+  background-color: rgba(255, 255, 255, 0);
+
+  color: var(--ReCK-foreground-color);
+  font-family: monospace;
+  font-weight: bold;
+
+  border: 1px solid var(--ReCK-divider-color);
+  border-radius: 2px;
+  outline: none;
+}
+
+.ReCK-button:focus {
+  border-color: var(--ReCK-focus-color-opaque);
+  outline: none;
+}
+
+.ReCK-button:hover {
+  background-color: var(--ReCK-hover-color);
+}
+
+.ReCK-button > .ReCK-icon {
+  margin-right: 12px;
+  fill: var(--ReCK-foreground-color);
 }

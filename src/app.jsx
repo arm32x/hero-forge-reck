@@ -4,11 +4,11 @@ import { keymap } from "@codemirror/view";
 import { basicSetup, EditorView } from "codemirror";
 import { materialDarkHighlightStyle } from "cm6-theme-material-dark";
 
-import { ChevronRight } from "./icons.jsx";
+import * as icons from "./icons.jsx";
 import stylesheet from "./style.css";
 import { indentWithTab } from "@codemirror/commands";
 import { syntaxHighlighting } from "@codemirror/language";
-import { linter, lintGutter } from "@codemirror/lint";
+import { linter } from "@codemirror/lint";
 
 GM_addStyle(stylesheet);
 
@@ -57,10 +57,10 @@ const JsonEditor = () => {
       },
 
       ".cm-activeLine": {
-        backgroundColor: "var(--ReCK-editor-active-line-background-color)",
+        backgroundColor: "var(--ReCK-hover-color)",
       },
       ".cm-activeLineGutter": {
-        backgroundColor: "var(--ReCK-editor-active-line-background-color)",
+        backgroundColor: "var(--ReCK-hover-color)",
       },
 
       "&.cm-focused": {
@@ -145,9 +145,13 @@ const JsonEditor = () => {
         </span>
       </div>
       <div className="ReCK-json-codemirror">{codemirror.dom}</div>
-      <div className="ReCK-json-button-panel">
-        <button>Reload</button>
-        <button>Apply</button>
+      <div className="ReCK-button-panel">
+        <button className="ReCK-button">
+          <icons.FileOpen />Reload
+        </button>
+        <button className="ReCK-button">
+          <icons.SaveAlt />Apply
+        </button>
       </div>
     </>
   );
@@ -159,7 +163,7 @@ const sidebar = mountDom(
       <JsonEditor />
     </div>
     <div className="ReCK-sidebar-handle">
-      <ChevronRight />
+      <icons.ChevronRight />
     </div>
   </div>
 );
