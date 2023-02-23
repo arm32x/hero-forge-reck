@@ -50,6 +50,31 @@ const JsonEditor = () => {
     ],
   });
 
+  const reload = () => {
+    const undoQueue = unsafeWindow.CK.UndoQueue;
+    const jsonObject = undoQueue.queue[undoQueue.currentIndex];
+    const jsonString = JSON.stringify(jsonObject, null, "  ");
+
+    codemirror.dispatch({
+      changes: {
+        from: 0,
+        to: codemirror.state.doc.length,
+        insert: jsonString,
+      },
+    });
+  };
+  const apply = () => {
+    // TODO: Handle errors properly.
+    const jsonString = codemirror.state.doc.toString();
+    const jsonObject = JSON.parse(jsonString);
+
+    unsafeWindow.CK.tryLoadCharacter(
+      jsonObject,
+      "ReCK: Invalid character data",
+      () => console.log("ReCK: Applied character")
+    );
+  };
+
   return (
     <>
       <div className="ReCK-header">
@@ -59,12 +84,12 @@ const JsonEditor = () => {
       </div>
       <div className="ReCK-json-codemirror">{codemirror.dom}</div>
       <div className="ReCK-button-panel">
-        <button className="ReCK-button">
+        <button className="ReCK-button" onClick={reload}>
           <div className="rippleJS"></div>
           <icons.FileOpen />
           Reload
         </button>
-        <button className="ReCK-button">
+        <button className="ReCK-button" onClick={apply}>
           <div className="rippleJS"></div>
           <icons.SaveAlt />
           Apply
