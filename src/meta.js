@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name        ReCK for Hero Forge
 // @namespace   https://arm32.ax/userscripts
-// @match       http://www.heroforge.com/
-// @match       https://www.heroforge.com/
+// @match       http://www.heroforge.com/*
+// @match       https://www.heroforge.com/*
 // @version     ${version}
 // @author      ${author}
 // @description Allows editing the raw JSON data of Hero Forge characters.
