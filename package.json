@@ -9,8 +9,7 @@
     "node": ">=16"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production run-s build-dev",
-    "build-dev": "rollup -c",
+    "build": "rollup -c",
     "clean": "del-cli dist",
     "dev": "run-p dev-build dev-serve",
     "dev-build": "rollup -wc",

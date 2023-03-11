@@ -24,7 +24,9 @@ export default {
     babel({
       babelHelpers: "bundled",
     }),
-    cleanup(),
+    cleanup({
+      comments: ["some", /__PURE__/],
+    }),
     wrap({
       intro: (absolute) => {
         const relative = path.relative(process.cwd(), absolute);
