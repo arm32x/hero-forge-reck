@@ -33,7 +33,6 @@ const observer = new MutationObserver((_, observer) => {
   const header = mountpoint.getElementsByTagName("header").item(0);
   const dropdowns = header?.getElementsByTagName("nav").item(0);
   if (header && dropdowns) {
-    console.log("Reinserting version tag");
     observer.disconnect();
     header.insertBefore(versionTag, dropdowns);
     observer.observe(mountpoint, { childList: true, subtree: true });
