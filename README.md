@@ -8,15 +8,18 @@ A userscript that allows you to edit the JSON data of [Hero Forge][] characters.
  2. Click the button below to open the installation page, then click *Install*.
     (Not yet implemented.)
 
-<center>
-    <kbd>Install ReCK</kbd>
-</center>
+<div align="center">
+    <strong>
+        <kbd> <br/> Install <br/> </kbd>
+    </strong>
+</div>
 
 ## Screenshots
 
 ![Hero Forge with ReCK installed](screenshots/reck-closed.png)
 
 ![ReCK JSON Editor opened](screenshots/reck-json-editor-opened.png)
+
 
 [Hero Forge]: https://heroforge.com/
 [Violentmonkey]: https://violentmonkey.github.io/
