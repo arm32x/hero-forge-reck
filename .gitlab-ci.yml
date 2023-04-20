@@ -13,6 +13,8 @@ stages:
 
 build:
   stage: build
+  rules:
+    - if: $CI_COMMIT_TAG
   script:
     - yarn install --frozen-lockfile --production
     - yarn build
