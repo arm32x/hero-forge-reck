@@ -5,8 +5,8 @@ A userscript that allows you to edit the JSON data of [Hero Forge][] characters.
 ## Installation
 
  1. Install a userscript manager such as [Violentmonkey][] or [Tampermonkey][].
- 2. Click the button below to open the installation page, then click *Install*.
-    (Not yet implemented.)
+ 2. Click the button below to open your userscript manager’s installation page,
+    then click *Install* (or equivalent) to confirm the installation.
 
 <div align="center">
 
