@@ -15,10 +15,11 @@
     "dev-build": "rollup -wc",
     "dev-serve": "mkdirp dist && cd dist && http-server -c5"
   },
-  "devDependencies": {
+  "dependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
+    "@codemirror/commands": "^6.2.0",
     "@codemirror/lang-json": "^6.0.1",
     "@codemirror/language": "^6.6.0",
     "@codemirror/lint": "^6.1.0",
@@ -32,9 +33,6 @@
     "cm6-theme-material-dark": "https://gitpkg.now.sh/craftzdog/cm6-themes/packages/material-dark?bff23f6&scripts.postinstall=npm%20install%20--ignore-scripts%20%26%26%20npm%20run%20prepare",
     "codemirror": "^6.0.1",
     "del-cli": "^5.0.0",
-    "http-server": "^14.1.1",
-    "mkdirp": "^2.1.3",
-    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.21",
     "postcss-modules": "^6.0.0",
     "prettier": "^2.8.4",
@@ -45,7 +43,9 @@
     "rollup-plugin-userscript": "^0.1.1",
     "vanilla-ripplejs": "^1.0.6"
   },
-  "dependencies": {
-    "@codemirror/commands": "^6.2.0"
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "mkdirp": "^2.1.3",
+    "npm-run-all": "^4.1.5"
   }
 }
