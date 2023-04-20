@@ -18,4 +18,4 @@ build:
     - yarn build
   artifacts:
     paths:
-      - dist/hero-forge-reck.js
+      - dist/hero-forge-reck.user.js
