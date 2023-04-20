@@ -10,7 +10,7 @@ A userscript that allows you to edit the JSON data of [Hero Forge][] characters.
 
 <div align="center">
 
-**[<kbd>&nbsp;<br/>&nbsp;Install ReCK&nbsp;<br/>&nbsp;</kbd>](#)**
+**[<kbd>&nbsp;<br/>&nbsp;Install ReCK&nbsp;<br/>&nbsp;</kbd>][Install ReCK]**
 
 </div>
 
@@ -24,3 +24,4 @@ A userscript that allows you to edit the JSON data of [Hero Forge][] characters.
 [Hero Forge]: https://heroforge.com/
 [Violentmonkey]: https://violentmonkey.github.io/
 [Tampermonkey]: https://www.tampermonkey.net/
+[Install ReCK]: https://gitlab.com/api/v4/projects/arm32x%2Fhero-forge-reck/jobs/artifacts/develop/raw/dist/hero-forge-reck.user.js?job=build

@@ -6,6 +6,8 @@
 // @version     ${version}
 // @author      ${author}
 // @description Allows editing the raw JSON data of Hero Forge characters.
+// @updateURL   https://gitlab.com/api/v4/projects/arm32x%2Fhero-forge-reck/jobs/artifacts/develop/raw/dist/hero-forge-reck.user.js?job=build
+// @downloadURL https://gitlab.com/api/v4/projects/arm32x%2Fhero-forge-reck/jobs/artifacts/develop/raw/dist/hero-forge-reck.user.js?job=build
 // ==/UserScript==
 
 /**
