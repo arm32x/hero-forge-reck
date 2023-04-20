@@ -9,9 +9,9 @@ A userscript that allows you to edit the JSON data of [Hero Forge][] characters.
     (Not yet implemented.)
 
 <div align="center">
-    <strong>
-        <kbd> <br/> Install <br/> </kbd>
-    </strong>
+
+**[<kbd>&nbsp;<br/>&nbsp;Install ReCK&nbsp;<br/>&nbsp;</kbd>](#)**
+
 </div>
 
 ## Screenshots
