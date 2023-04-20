@@ -30,7 +30,7 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@violentmonkey/types": "^0.1.4",
     "autoprefixer": "^10.4.13",
-    "cm6-theme-material-dark": "https://gitpkg.now.sh/craftzdog/cm6-themes/packages/material-dark?bff23f6&scripts.postinstall=npm%20install%20--ignore-scripts%20%26%26%20npm%20run%20prepare",
+    "cm6-theme-material-dark": "https://gitpkg.now.sh/craftzdog/cm6-themes/packages/material-dark?bff23f6&scripts.postinstall=npm%20install%20--ignore-scripts%20--production%3Dfalse%20%26%26%20npm%20run%20prepare",
     "codemirror": "^6.0.1",
     "del-cli": "^5.0.0",
     "postcss": "^8.4.21",
