@@ -24,4 +24,4 @@ A userscript that allows you to edit the JSON data of [Hero Forge][] characters.
 [Hero Forge]: https://heroforge.com/
 [Violentmonkey]: https://violentmonkey.github.io/
 [Tampermonkey]: https://www.tampermonkey.net/
-[Install ReCK]: https://gitlab.com/api/v4/projects/arm32x%2Fhero-forge-reck/jobs/artifacts/develop/raw/dist/hero-forge-reck.user.js?job=build
+[Install ReCK]: https://github.com/arm32x/hero-forge-reck/releases/latest/download/hero-forge-reck.user.js
