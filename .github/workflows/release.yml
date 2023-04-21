@@ -1,0 +1,53 @@
+name: Build and release
+run-name: Build and release ReCK for Hero Forge ${{ github.ref_name }}
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Work around GitHub's tag fetching behavior
+        run: |
+          git fetch --progress origin "+$GITHUB_REF:$GITHUB_REF"
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --production
+
+      - name: Build
+        run: yarn build
+
+      - name: Get tag description
+        id: tag_description
+        run: |
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "tag_subject<<$EOF" >> $GITHUB_OUTPUT
+          git tag -l --format='%(contents:subject)' "$GITHUB_REF_NAME" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+          echo "tag_body<<$EOF" >> $GITHUB_OUTPUT
+          git tag -l --format='%(contents:body)' "$GITHUB_REF_NAME" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+
+      - name: Create release
+        id: create_release
+        uses: softprops/action-gh-release@v0.1.15
+        with:
+          name: ${{ steps.tag_description.outputs.tag_subject }}
+          body: ${{ steps.tag_description.outputs.tag_body }}
+          files: |
+            ./dist/hero-forge-reck.user.js
