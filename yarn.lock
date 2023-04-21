@@ -1384,10 +1384,6 @@ clean-stack@^4.0.0:
   dependencies:
     escape-string-regexp "5.0.0"
 
-"cm6-theme-material-dark@https://gitpkg.now.sh/craftzdog/cm6-themes/packages/material-dark?bff23f6&scripts.postinstall=npm%20install%20--ignore-scripts%20--production%3Dfalse%20%26%26%20npm%20run%20prepare":
-  version "0.2.0"
-  resolved "https://gitpkg.now.sh/craftzdog/cm6-themes/packages/material-dark?bff23f6&scripts.postinstall=npm%20install%20--ignore-scripts%20--production%3Dfalse%20%26%26%20npm%20run%20prepare#0a0b107b92e2381fb28e6db3b713fdd9799fd895"
-
 codemirror@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-6.0.1.tgz#62b91142d45904547ee3e0e0e4c1a79158035a29"

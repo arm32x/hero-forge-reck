@@ -4,13 +4,13 @@ import { syntaxHighlighting } from "@codemirror/language";
 import { linter } from "@codemirror/lint";
 import { keymap } from "@codemirror/view";
 import { mountDom } from "@gera2ld/jsx-dom";
-import { materialDarkHighlightStyle } from "cm6-theme-material-dark";
 import { basicSetup, EditorView } from "codemirror";
 import initRippleJS from "vanilla-ripplejs/lib";
 import rippleJSStylesheet from "vanilla-ripplejs/ripple.css";
 
 import * as camera from "./camera.js";
 import * as icons from "./icons.jsx";
+import highlightStyle from "./highlight-style.js";
 import stylesheet from "./style.css";
 import theme from "./theme.js";
 
@@ -48,7 +48,7 @@ const JsonEditor = () => {
       json(),
       linter(jsonParseLinter()),
       theme,
-      syntaxHighlighting(materialDarkHighlightStyle),
+      syntaxHighlighting(highlightStyle),
       EditorView.darkTheme.of(true),
     ],
   });
