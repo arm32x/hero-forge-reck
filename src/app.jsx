@@ -21,7 +21,6 @@ const version = GM_info.script.version;
 console.log(`ReCK for Hero Forge v${version}`);
 
 // Some Hero Forge stuff so I don't have to type unsafeWindow everywhere.
-const ck = unsafeWindow.CK;
 
 const versionTag = mountDom(
   <span className="ReCK-version-tag">+ ReCK v{version}</span>
@@ -40,7 +39,7 @@ const observer = new MutationObserver((_, observer) => {
 });
 observer.observe(mountpoint, { childList: true, subtree: true });
 
-const JsonEditor = () => {
+var JsonEditor = () => {
   const codemirror = new EditorView({
     extensions: [
       basicSetup,
@@ -53,8 +52,8 @@ const JsonEditor = () => {
     ],
   });
 
-  const reload = () => {
-    const jsonObject = ck.UndoQueue.queue[ck.UndoQueue.currentIndex];
+  var reload = () => {
+    const jsonObject = unsafeWindow.CK.UndoQueue.queue[unsafeWindow.CK.UndoQueue.currentIndex];
     const jsonString = JSON.stringify(jsonObject, null, "  ");
 
     codemirror.dispatch({
@@ -65,13 +64,13 @@ const JsonEditor = () => {
       },
     });
   };
-  const apply = () => {
+  var apply = () => {
     // TODO: Handle errors properly.
     const jsonString = codemirror.state.doc.toString();
     const jsonObject = JSON.parse(jsonString);
 
     camera.preventNextChanges(1);
-    ck.tryLoadCharacter(jsonObject, "ReCK: Invalid character data", () => {
+    unsafeWindow.CK.tryLoadCharacter(jsonObject, "ReCK: Invalid character data", () => {
       console.log("ReCK: Applied character");
     });
   };
