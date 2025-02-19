@@ -1,9 +1,7 @@
-//const ck = unsafeWindow.CK;
-
 let orbitCameraPatched = false;
 let cameraChangesToPrevent = 0;
 
-var patchOrbitCamera = () => {
+const patchOrbitCamera = () => {
   Object.defineProperty(unsafeWindow.CK.orbitCamera, "preventCameraChanges", {
     get() {
       if (cameraChangesToPrevent > 0) {

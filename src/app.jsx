@@ -20,8 +20,6 @@ GM_addStyle(rippleJSStylesheet);
 const version = GM_info.script.version;
 console.log(`ReCK for Hero Forge v${version}`);
 
-// Some Hero Forge stuff so I don't have to type unsafeWindow everywhere.
-
 const versionTag = mountDom(
   <span className="ReCK-version-tag">+ ReCK v{version}</span>
 );
@@ -39,7 +37,7 @@ const observer = new MutationObserver((_, observer) => {
 });
 observer.observe(mountpoint, { childList: true, subtree: true });
 
-var JsonEditor = () => {
+const JsonEditor = () => {
   const codemirror = new EditorView({
     extensions: [
       basicSetup,
@@ -52,7 +50,7 @@ var JsonEditor = () => {
     ],
   });
 
-  var reload = () => {
+  const reload = () => {
     const jsonObject = unsafeWindow.CK.UndoQueue.queue[unsafeWindow.CK.UndoQueue.currentIndex];
     const jsonString = JSON.stringify(jsonObject, null, "  ");
 
@@ -64,7 +62,7 @@ var JsonEditor = () => {
       },
     });
   };
-  var apply = () => {
+  const apply = () => {
     // TODO: Handle errors properly.
     const jsonString = codemirror.state.doc.toString();
     const jsonObject = JSON.parse(jsonString);
