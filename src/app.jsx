@@ -20,9 +20,6 @@ GM_addStyle(rippleJSStylesheet);
 const version = GM_info.script.version;
 console.log(`ReCK for Hero Forge v${version}`);
 
-// Some Hero Forge stuff so I don't have to type unsafeWindow everywhere.
-const ck = unsafeWindow.CK;
-
 const versionTag = mountDom(
   <span className="ReCK-version-tag">+ ReCK v{version}</span>
 );
@@ -54,7 +51,7 @@ const JsonEditor = () => {
   });
 
   const reload = () => {
-    const jsonObject = ck.UndoQueue.queue[ck.UndoQueue.currentIndex];
+    const jsonObject = unsafeWindow.CK.UndoQueue.queue[unsafeWindow.CK.UndoQueue.currentIndex];
     const jsonString = JSON.stringify(jsonObject, null, "  ");
 
     codemirror.dispatch({
@@ -71,7 +68,7 @@ const JsonEditor = () => {
     const jsonObject = JSON.parse(jsonString);
 
     camera.preventNextChanges(1);
-    ck.tryLoadCharacter(jsonObject, "ReCK: Invalid character data", () => {
+    unsafeWindow.CK.tryLoadCharacter(jsonObject, "ReCK: Invalid character data", () => {
       console.log("ReCK: Applied character");
     });
   };
